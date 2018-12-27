@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SopVault.Data;
 using SopVault.Models;
-using SopVault.Services.AppContext;
 
 namespace SopVault.Repository
 {

@@ -1,5 +1,3 @@
-using System;
-
 namespace SopVault.Models
 {
     public class ErrorViewModel
