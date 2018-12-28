@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using SopVault.Models;
+using SopVaultDataModels.Models;
 
 namespace SopVault.Repository
 {

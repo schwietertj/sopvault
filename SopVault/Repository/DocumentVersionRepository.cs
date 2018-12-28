@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SopVault.Data;
-using SopVault.Models;
+using SopVaultDataModels.Data;
+using SopVaultDataModels.Models;
 
 namespace SopVault.Repository
 {
@@ -17,6 +17,8 @@ namespace SopVault.Repository
 
         public override async Task<DocumentVersion> Upsert(DocumentVersion entity)
         {
+            entity = SetTimestamps(entity);
+
             if (entity.Id > 0)
             {
                 var nextVersion = 1;

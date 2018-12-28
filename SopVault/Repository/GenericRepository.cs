@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SopVault.Data;
-using SopVault.Models;
+using SopVault.Services.AppContext;
+using SopVaultDataModels.Data;
+using SopVaultDataModels.Models;
 
 namespace SopVault.Repository
 {
@@ -29,12 +31,14 @@ namespace SopVault.Repository
 
         public virtual async Task Create(TEntity entity)
         {
+            entity = SetTimestamps(entity);
             await _dbContext.Set<TEntity>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
         }
 
         public virtual async Task Update(long id, TEntity entity)
         {
+            entity = SetTimestamps(entity);
             _dbContext.Set<TEntity>().Update(entity);
             await _dbContext.SaveChangesAsync();
         }
@@ -52,6 +56,7 @@ namespace SopVault.Repository
 
         public virtual async Task<TEntity> Upsert(TEntity entity)
         {
+            entity = SetTimestamps(entity);
             if (entity.Id > 0)
             {
                 await _dbContext.Set<TEntity>().AddAsync(entity);
@@ -62,6 +67,20 @@ namespace SopVault.Repository
             }
 
             await _dbContext.SaveChangesAsync();
+
+            return entity;
+        }
+        
+        protected TEntity SetTimestamps(TEntity entity)
+        {
+            if (entity.Id <= 0)
+            {
+                entity.Created = DateTime.UtcNow;
+                entity.CreatedBy = AppContextHelper.Current.User.Identity.Name;
+            }
+
+            entity.Modified = DateTime.UtcNow;
+            entity.ModifiedBy = AppContextHelper.Current.User.Identity.Name;
 
             return entity;
         }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SopVault.Models;
 using SopVault.Repository;
+using SopVaultDataModels.Models;
 
 namespace SopVault.Controllers
 {

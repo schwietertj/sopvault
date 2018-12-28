@@ -1,5 +1,5 @@
-﻿using SopVault.Data;
-using SopVault.Models;
+﻿using SopVaultDataModels.Data;
+using SopVaultDataModels.Models;
 
 namespace SopVault.Repository
 {

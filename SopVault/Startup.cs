@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SopVault.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SopVault.Helpers;
 using SopVault.Repository;
 using SopVault.Services.AppContext;
+using SopVaultDataModels.Data;
 
 namespace SopVault
 {
@@ -35,7 +35,7 @@ namespace SopVault
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(AppConstants.ConnectionString ?? @"Server=.\sqlexpress;Database=sopvault;User Id=sopvaultworker;Password=Cimplx123!;"));
+                options.UseSqlServer(AppConstants.ConnectionString));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
