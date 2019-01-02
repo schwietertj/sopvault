@@ -27,7 +27,8 @@ namespace SopVaultDataModels.Data
 
             // Document
             builder.Entity<Document>().HasIndex(x => new {x.DepartmentId, x.DocumentNumber}).IsUnique();
-
+            builder.Entity<Document>().HasIndex(x => new {x.DocumentNumber}).IsUnique();
+            
             // Document Version
             builder.Entity<DocumentVersion>().HasIndex(x => new { x.DocumentId, x.Version}).IsUnique();
 

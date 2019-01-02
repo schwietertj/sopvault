@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SopVaultDataModels.Data;
 using SopVaultDataModels.Models;
@@ -17,6 +18,11 @@ namespace SopVault.Repository
         public IQueryable<Document> GetAllByDepartmentId(long id)
         {
             return _ctx.Set<Document>().AsNoTracking().Where(x => x.DepartmentId == id);
+        }
+
+        public async Task<bool> DocumentNumberExists(string documentNumber)
+        {
+            return await _ctx.Documents.AnyAsync(x => x.DocumentNumber.ToLower() == documentNumber.ToLower().Trim());
         }
     }
 }

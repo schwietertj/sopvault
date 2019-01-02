@@ -1,0 +1,34 @@
+﻿@model SopVaultDataModels.Models.Department
+
+@{
+    ViewData["Title"] = "Create Department";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Sop" asp-action="CreateDepartment" method="post">
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" asp-for="Name" class="form-control" required placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <label>Abbreviation</label>
+                <input type="text" asp-for="Abbreviation" class="form-control" required placeholder="Abbreviation" />
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" asp-for="Active" />
+                <label class="form-check-label">Active</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <input type="submit" class="btn btn-primary" value="Create" />
+        </div>
+        <div class="col-2">
+            <a asp-controller="Sop" asp-action="Index" class="btn">Cancel</a>
+        </div>
+    </div>
+</form>

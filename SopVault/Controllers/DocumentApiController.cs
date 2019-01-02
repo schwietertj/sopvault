@@ -68,5 +68,10 @@ namespace SopVault.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DocumentNumberExists(string documentNumber)
+        {
+            return Json(await _documentRepository.DocumentNumberExists(documentNumber));
+        }
     }
 }
