@@ -341,3 +341,4 @@ ASALocalRun/
 healthchecksdb
 /SopVault/.env
 /SopVaultDataModels/.env
+/SopVaultApi/.env
