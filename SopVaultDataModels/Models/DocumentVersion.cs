@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SopVaultDataModels.Models
@@ -19,5 +20,7 @@ namespace SopVaultDataModels.Models
 
         [ForeignKey("DocumentId")]
         public Document Document { get; set; }
+
+        public IEnumerable<Link> Links { get; set; }
     }
 }

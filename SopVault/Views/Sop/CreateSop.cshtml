@@ -1,7 +1,41 @@
-﻿
+﻿@model SopViewModel
 @{
     ViewData["Title"] = "CreateSop";
 }
 
 <h1>CreateSop</h1>
 
+<div class="row">
+    <div class="form-group">
+        <label>Reference Number</label>
+        <input type="text" asp-for="@Model.Document.DocumentNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label></label>
+        <input type="text" asp-for="@Model.DocumentVersion" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label></label>
+        <textarea asp-for="@Model.DocumentVersion" class="form-control" rows="10"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label></label>
+        <textarea asp-for="@Model.DocumentVersion" class="form-control" rows="10"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label></label>
+        <textarea asp-for="@Model.DocumentVersion" class="form-control" rows="10"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label></label>
+        <textarea asp-for="@Model.DocumentVersion" class="form-control" rows="10"></textarea>
+    </div>
+    
+
+
+</div>

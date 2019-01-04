@@ -76,7 +76,5 @@ namespace SopVault.Controllers
 
             return RedirectToAction("Department", new { departmentId });
         }
-
-
     }
 }

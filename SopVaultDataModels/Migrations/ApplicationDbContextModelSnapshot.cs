@@ -294,6 +294,41 @@ namespace SopVaultDataModels.Migrations
                     b.ToTable("DocumentVersions");
                 });
 
+            modelBuilder.Entity("SopVaultDataModels.Models.Link", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Active")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(true);
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1024);
+
+                    b.Property<long>("DocumentVersionId");
+
+                    b.Property<DateTime>("Modified");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(1024);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentVersionId", "Url")
+                        .IsUnique();
+
+                    b.ToTable("Links");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -352,6 +387,14 @@ namespace SopVaultDataModels.Migrations
                     b.HasOne("SopVaultDataModels.Models.Document", "Document")
                         .WithMany("DocumentVersions")
                         .HasForeignKey("DocumentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SopVaultDataModels.Models.Link", b =>
+                {
+                    b.HasOne("SopVaultDataModels.Models.DocumentVersion", "DocumentVersion")
+                        .WithMany("Links")
+                        .HasForeignKey("DocumentVersionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

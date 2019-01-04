@@ -47,6 +47,7 @@ namespace SopVault
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IDocumentRepository, DocumentRepository>();
             services.AddScoped<IDocumentVersionRepository, DocumentVersionRepository>();
+            services.AddScoped<ILinkRepository, LinkRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
